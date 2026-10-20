@@ -1,116 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500&display=swap');
 
-:root {
-    --preto: #0a0a0a;
-    --grafite: #121212;
-    --linha: #2a2a2a;
-    --vermelho: #d6001c;
-    --vermelho-escuro: #a30016;
-    --texto: #e8e8e8;
-    --texto-suave: #8c8c8c;
-}
-
-/* Fundo da página */
 .main {
     min-height: 100vh;
-    padding: 40px;
-
-    background: radial-gradient(ellipse at top, #1a1a1a 0%, var(--preto) 65%);
-
+    padding: 40px 12px;
+    background: radial-gradient(circle at top, #1a1a1a 0%, #0a0a0a 60%, #050505 100%);
+    color: #ffffff;
     font-family: 'Inter', sans-serif;
-    color: var(--texto);
 }
 
-/* Cabeçalho da página */
-.tituloArea {
+/* Título e subtítulo */
+.titulo {
     text-align: center;
     margin-bottom: 40px;
 }
 
-.tituloArea h2 {
-    position: relative;
-
-    margin-bottom: 24px;
-    padding-bottom: 20px;
-
+.titulo h2 {
+    margin: 0 0 10px;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 2.6rem;
+    font-size: 2.4rem;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: #ffffff;
 }
 
-/* Marca vermelha curta sob o título */
-.tituloArea h2::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 60px;
-    height: 3px;
-
-    background: var(--vermelho);
-    transform: translateX(-50%);
+.titulo p {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #8a8a8a;
 }
 
-.tituloArea p {
-    font-size: 1rem;
-    color: var(--texto-suave);
-}
-
-/* Card da tabela */
+/* Container da tabela */
 .tabelaContainer {
-    background: var(--grafite);
-
-    border: 1px solid var(--linha);
-    border-top: 3px solid var(--vermelho);
-    border-radius: 2px;
-
-    overflow: hidden;
-
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    overflow-x: auto;
+    background: #121212;
+    border: 1px solid #262626;
+    border-top: 2px solid #d4001f;
+    border-radius: 3px;
 }
 
-/* Tabela */
 .tabela {
     width: 100%;
     border-collapse: collapse;
+    text-align: left;
 }
 
 /* Cabeçalho da tabela */
 .tabela thead {
-    background: var(--preto);
-    border-bottom: 2px solid var(--vermelho);
+    background: #0a0a0a;
 }
 
 .tabela th {
-    padding: 16px 18px;
-    text-align: left;
-
+    padding: 22px 22px;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #ffffff;
+    border-bottom: 2px solid #d4001f;
+    white-space: nowrap;
 }
 
 /* Linhas */
 .tabela td {
-    padding: 16px 18px;
-
-    font-size: 0.95rem;
-    color: var(--texto);
-
-    border-bottom: 1px solid var(--linha);
+    padding: 22px 22px;
+    font-size: 1rem;
+    color: #e6e6e6;
+    border-bottom: 1px solid #1f1f1f;
+    text-transform: uppercase;
 }
 
-.tabela tbody tr:last-child td {
-    border-bottom: none;
-}
-
-/* Hover da linha */
 .tabela tbody tr {
     transition: background 0.2s ease;
 }
@@ -119,73 +80,69 @@
     background: #1a1a1a;
 }
 
-.tabela tbody tr:hover td:first-child {
-    box-shadow: inset 3px 0 0 var(--vermelho);
+.tabela tbody tr:last-child td {
+    border-bottom: none;
 }
 
-/* Botões */
+/* Botões de ação */
+.acoes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .botaoEditar,
 .botaoExcluir {
-    margin-right: 8px;
-    padding: 9px 16px;
-
+    padding: 12px 20px;
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 0.95rem;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-
     border-radius: 2px;
     cursor: pointer;
-
-    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
-/* Editar: contornado, neutro */
 .botaoEditar {
     background: transparent;
-    color: var(--texto);
-    border: 1px solid #444;
+    color: #ffffff;
+    border: 1px solid #3a3a3a;
 }
 
 .botaoEditar:hover {
-    border-color: var(--vermelho);
-    color: #ffffff;
+    border-color: #ffffff;
+    background: #1c1c1c;
 }
 
-/* Excluir: vermelho chapado */
 .botaoExcluir {
-    background: var(--vermelho);
+    background: #d4001f;
     color: #ffffff;
-    border: 1px solid var(--vermelho);
+    border: 1px solid #d4001f;
 }
 
 .botaoExcluir:hover {
-    background: var(--vermelho-escuro);
-    border-color: var(--vermelho-escuro);
+    background: #ff1a3c;
+    border-color: #ff1a3c;
 }
 
-.botaoEditar:focus-visible,
-.botaoExcluir:focus-visible {
-    outline: 2px solid var(--vermelho);
-    outline-offset: 3px;
+.botaoEditar:active,
+.botaoExcluir:active {
+    transform: scale(0.97);
 }
 
-/* Responsividade */
+/* Responsivo */
 @media (max-width: 768px) {
     .main {
-        padding: 20px;
+        padding: 24px 8px;
     }
 
-    .tabelaContainer {
-        overflow-x: auto;
+    .titulo h2 {
+        font-size: 1.8rem;
     }
 
-    .tabela {
-        min-width: 600px;
-    }
-
-    .tituloArea h2 {
-        font-size: 2rem;
+    .tabela th,
+    .tabela td {
+        padding: 16px 14px;
     }
 }

@@ -16,7 +16,6 @@ export default function ListAluno() {
     async function buscarAlunos() {
         const resposta = await fetch('/api/alunos');
         const dados = await resposta.json();
-
         setAlunos(dados);
     }
 

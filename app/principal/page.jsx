@@ -23,14 +23,9 @@ export default function Principal() {
                         desenvolvimento educacional.
                     </p>
 
-                    <a
-                        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.btn}
-                    >
+                    <button className={styles.btn}>
                         Acessar Portal
-                    </a>
+                    </button>
                 </section>
 
                 <section className={styles.cards}>
