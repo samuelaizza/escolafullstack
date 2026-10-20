@@ -1,0 +1,398 @@
+/* =========================================
+   SISTEMA ESCOLAR SESI MIRANDÓPOLIS
+   Tema futurista: preto, vermelho e branco
+========================================= */
+
+.main {
+    min-height: 100vh;
+    color: #f5f5f5;
+    background:
+        radial-gradient(ellipse at 50% 0%, #3a1015 0%, transparent 45%),
+        linear-gradient(180deg, #111111 0%, #080808 100%);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 100px 25px 85px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(230, 30, 45, 0.18);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 400px;
+    height: 250px;
+    transform: translateX(-50%);
+    background: rgba(220, 20, 40, 0.08);
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+.status {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 25px;
+    padding: 10px 18px;
+    color: #ff414d;
+    background: rgba(220, 20, 40, 0.08);
+    border: 1px solid rgba(255, 55, 70, 0.35);
+    border-radius: 5px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+}
+
+.hero h2 {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto 25px;
+    color: #ffffff;
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+}
+
+.hero h2 span {
+    display: block;
+    margin-top: 10px;
+    color: #ff303f;
+    text-shadow: 0 0 25px rgba(255, 35, 55, 0.25);
+}
+
+.hero > p:not(.status) {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+    color: #bcbcbc;
+    font-size: 1.05rem;
+    line-height: 1.9;
+}
+
+/* BOTÃO */
+
+.btn {
+    position: relative;
+    display: inline-block;
+    margin-top: 32px;
+    padding: 16px 34px;
+    color: #ffffff;
+    text-decoration: none;
+    background: linear-gradient(135deg, #ed1c2e, #a90016);
+    border: 1px solid #ff3948;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(200, 0, 25, 0.2);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #ff3445, #d00020);
+    box-shadow: 0 10px 30px rgba(255, 30, 50, 0.3);
+}
+
+.btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 55px 35px;
+}
+
+.card {
+    position: relative;
+    min-width: 0;
+    padding: 30px 25px;
+    background: linear-gradient(145deg, #1c1c1c, #111111);
+    border: 1px solid #303030;
+    border-top: 3px solid #d7192d;
+    border-radius: 8px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35px;
+    height: 3px;
+    background: #ff5965;
+    box-shadow: 0 0 12px rgba(255, 40, 60, 0.6);
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: #69212a;
+    border-top-color: #ff303f;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 18px rgba(220, 20, 40, 0.08);
+}
+
+.card h3 {
+    margin: 0 0 16px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.card p {
+    margin: 0;
+    color: #b8b8b8;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+/* PAINEL ESCOLAR */
+
+.dashboard {
+    padding: 75px 40px 85px;
+    text-align: center;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.015),
+        rgba(200, 15, 35, 0.035),
+        rgba(255, 255, 255, 0.01)
+    );
+    border-top: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+}
+
+.dashboard h2,
+.timeline h2 {
+    margin: 0 0 42px;
+    color: #ffffff;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.dashboard h2::after,
+.timeline h2::after {
+    content: "";
+    display: block;
+    width: 65px;
+    height: 4px;
+    margin: 17px auto 0;
+    background: #ed1c2e;
+    border-radius: 3px;
+    box-shadow: 0 0 15px rgba(237, 28, 46, 0.35);
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.stat {
+    padding: 32px 20px;
+    background: #151515;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.stat:hover {
+    transform: translateY(-5px);
+    background: #1c1113;
+    border-color: #a92130;
+}
+
+.stat h3 {
+    margin: 0 0 12px;
+    color: #ff3545;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    text-shadow: 0 0 20px rgba(255, 35, 55, 0.2);
+}
+
+.stat p {
+    margin: 0;
+    color: #bdbdbd;
+    font-size: 0.95rem;
+}
+
+/* LINHA DO TEMPO */
+
+.timeline {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 85px 35px;
+}
+
+.timeline h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.event {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    max-width: 750px;
+    margin: 20px auto;
+    padding: 22px;
+    background: linear-gradient(100deg, #211113, #151515 55%);
+    border: 1px solid #303030;
+    border-left: 4px solid #e51b2b;
+    border-radius: 5px;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.event:hover {
+    transform: translateX(5px);
+    border-left-color: #ff4655;
+    background: linear-gradient(100deg, #301217, #181818 65%);
+}
+
+.event span {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #f1273a, #a90017);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 900;
+    box-shadow: 0 5px 15px rgba(220, 20, 40, 0.2);
+}
+
+.event p {
+    margin: 0;
+    color: #e5e5e5;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* RODAPÉ */
+
+.footer {
+    padding: 30px 20px;
+    color: #929292;
+    background: #070707;
+    border-top: 1px solid #3a171b;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer p {
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* SELEÇÃO DE TEXTO */
+
+.main ::selection {
+    color: #ffffff;
+    background: #bd1024;
+}
+
+/* TABLETS */
+
+@media (max-width: 1000px) {
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* CELULARES */
+
+@media (max-width: 600px) {
+    .hero {
+        padding: 70px 20px 60px;
+    }
+
+    .hero h2 {
+        letter-spacing: -0.5px;
+    }
+
+    .status {
+        font-size: 0.68rem;
+        letter-spacing: 1.5px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        padding: 35px 20px;
+        gap: 18px;
+    }
+
+    .dashboard {
+        padding: 60px 20px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .stat {
+        padding: 25px 20px;
+    }
+
+    .timeline {
+        padding: 60px 20px;
+    }
+
+    .event {
+        gap: 15px;
+        padding: 16px;
+    }
+
+    .event span {
+        width: 42px;
+        height: 42px;
+    }
+
+    .footer {
+        padding: 25px 15px;
+    }
+}
+
+/* REDUÇÃO DE ANIMAÇÕES */
+
+@media (prefers-reduced-motion: reduce) {
+    .btn,
+    .card,
+    .stat,
+    .event {
+        transition: none;
+    }
+
+    .btn:hover,
+    .card:hover,
+    .stat:hover,
+    .event:hover {
+        transform: none;
+    }
+}

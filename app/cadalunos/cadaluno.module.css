@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --preto: #0a0a0a;
+    --grafite: #121212;
+    --linha: #2a2a2a;
+    --vermelho: #d6001c;
+    --vermelho-escuro: #a30016;
+    --texto: #e8e8e8;
+    --texto-suave: #8c8c8c;
+}
+
+.main {
+    min-height: calc(100vh - 80px);
+    padding: 60px 20px;
+
+    background:
+        radial-gradient(ellipse at top, #1a1a1a 0%, var(--preto) 65%);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.painel {
+    padding: 48px 40px;
+
+    background: var(--grafite);
+    border: 1px solid var(--linha);
+    border-top: 3px solid var(--vermelho);
+    border-radius: 2px;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-bottom: 16px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--vermelho);
+}
+
+.status::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--vermelho);
+}
+
+.painel h2 {
+    position: relative;
+
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #ffffff;
+
+    border-bottom: 1px solid var(--linha);
+}
+
+.painel h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -1px;
+    width: 60px;
+    height: 3px;
+
+    background: var(--vermelho);
+    transform: translateX(-50%);
+}
+
+.form {
+    display: grid;
+    gap: 24px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+}
+
+.campo input {
+    width: 100%;
+    padding: 14px 16px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--texto);
+
+    background: var(--preto);
+    border: 1px solid var(--linha);
+    border-radius: 2px;
+
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.campo input:hover {
+    border-color: #444;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: var(--vermelho);
+    background: #0f0f0f;
+}
+
+.campo input::placeholder {
+    color: #555;
+}
+
+.botao {
+    margin-top: 12px;
+    padding: 16px 24px;
+
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ffffff;
+
+    background: var(--vermelho);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.botao:hover {
+    background: var(--vermelho-escuro);
+}
+
+.botao:active {
+    background: #7d0011;
+}
+
+.botao:focus-visible {
+    outline: 2px solid var(--vermelho);
+    outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+    .painel {
+        padding: 32px 22px;
+    }
+
+    .painel h2 {
+        font-size: 2rem;
+    }
+}

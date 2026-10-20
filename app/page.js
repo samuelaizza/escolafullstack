@@ -1,15 +1,8 @@
-import Header from "./components/header";
+import Principal from "./principal/page";
+import Image from "next/image";
 
 export default function Home() {
-    return (
-        <>
-            <Header />
-
-            <main className="inicio">
-                <h2>
-                    Bem vindo ao sistema escolar - SESI Mirandopolis
-                </h2>
-            </main>
-        </>
-    );
+  return (
+    <Principal />
+  );
 }

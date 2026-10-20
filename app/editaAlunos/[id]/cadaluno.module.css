@@ -1,0 +1,166 @@
+.main {
+    min-height: calc(100vh - 80px);
+    padding: 60px 20px;
+
+    background:
+        radial-gradient(circle at top, #1e1b4b, #050816 70%);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.painel {
+    background: rgba(255, 255, 255, 0.05);
+
+    border: 1px solid rgba(0, 229, 255, 0.3);
+
+    border-radius: 25px;
+
+    padding: 40px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 0 10px rgba(0, 229, 255, 0.3),
+        0 0 25px rgba(0, 229, 255, 0.2);
+}
+
+.status {
+    text-align: center;
+
+    color: #00e5ff;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 10px #00e5ff,
+        0 0 20px #00e5ff;
+}
+
+.painel h2 {
+    text-align: center;
+
+    color: #ffffff;
+
+    font-size: 2.5rem;
+
+    margin-bottom: 40px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 10px #00e5ff,
+        0 0 20px #ff00ff;
+}
+
+.form {
+    display: grid;
+    gap: 24px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo label {
+    color: #00e5ff;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.campo input {
+    width: 100%;
+
+    padding: 14px 18px;
+
+    border: 1px solid rgba(0, 229, 255, 0.3);
+
+    border-radius: 12px;
+
+    background: rgba(0, 0, 0, 0.3);
+
+    color: white;
+
+    font-size: 1rem;
+
+    transition: all 0.3s ease;
+}
+
+.campo input:focus {
+    outline: none;
+
+    border-color: #00e5ff;
+
+    box-shadow:
+        0 0 10px #00e5ff,
+        0 0 20px rgba(0, 229, 255, 0.4);
+
+    transform: scale(1.01);
+}
+
+.campo input::placeholder {
+    color: #94a3b8;
+}
+
+.botao {
+    margin-top: 15px;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        90deg,
+        #00e5ff,
+        #ff00ff
+    );
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.botao:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 0 15px #00e5ff,
+        0 0 30px #00e5ff,
+        0 0 40px #ff00ff;
+}
+
+.botao:active {
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .painel {
+        padding: 25px;
+    }
+
+    .painel h2 {
+        font-size: 2rem;
+    }
+}
