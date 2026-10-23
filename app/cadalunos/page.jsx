@@ -3,32 +3,48 @@
 import { useState } from "react";
 import Header from "../components/header";
 import styles from "./cadaluno.module.css";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function CadAlunos() {
     const [nome, setNome] = useState('');
     const [idade, setIdade] = useState('');
     const [serie, setSerie] = useState('');
     const [ra, setRa] = useState('');
+    const router = useRouter();
 
-    async function cadastraAluno(event){
+    async function cadastraAluno(event) {
         event.preventDefault();
-        const resposta = await fetch("/api/alunos",{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nome,
-                idade,
-                serie,
-                ra
-            })
-        })
-        const dados = await resposta.json();
-        alert(dados.mensagem || dados.erro)
-        if(resposta.ok){
-           redirect('/listalunos')
+
+        try {
+            const resposta = await fetch("/api/alunos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nome,
+                    idade,
+                    serie,
+                    ra
+                })
+            });
+
+            let dados = {};
+            try {
+                dados = await resposta.json();
+            } catch {
+                dados = { erro: "A API não retornou uma resposta válida (status " + resposta.status + ")" };
+            }
+
+            alert(dados.mensagem || dados.erro || "Operação concluída");
+
+            if (resposta.ok) {
+                router.push('/listalunos');
+                router.refresh(); // garante que a lista carregue os dados novos
+            }
+        } catch (erro) {
+            console.error(erro);
+            alert("Erro ao conectar com o servidor");
         }
     }
 

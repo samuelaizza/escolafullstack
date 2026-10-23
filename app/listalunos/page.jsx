@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import Header from "../components/header";
 import styles from './listalunos.module.css';
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function ListAluno() {
@@ -10,36 +9,55 @@ export default function ListAluno() {
     const router = useRouter();
 
     useEffect(() => {
-        buscarAlunos()
-    }, [])//toda vez que a tela for recarregada
+        buscarAlunos();
+    }, []); // executa quando a tela é carregada
 
     async function buscarAlunos() {
-        const resposta = await fetch('/api/alunos');
-        const dados = await resposta.json();
-        setAlunos(dados);
+        try {
+            const resposta = await fetch('/api/alunos', {
+                method: "GET",
+                cache: "no-store" // evita pegar dados antigos do cache
+            });
+            const dados = await resposta.json();
+
+            if (Array.isArray(dados)) {
+                setAlunos(dados);
+            } else {
+                console.error("Resposta inesperada da API:", dados);
+                alert(dados.erro || "Erro ao buscar alunos");
+                setAlunos([]);
+            }
+        } catch (erro) {
+            console.error(erro);
+            alert("Erro ao conectar com o servidor");
+        }
     }
 
-    function editarAlunos(id){
-        router.push(`/editalunos/${id}`)
+    function editarAlunos(id) {
+        router.push(`/editalunos/${id}`);
     }
 
-    async function excluiraAluno(event){
-        event.preventDefault();
-        if(!confirm('Deseja realmente excluir este aluno?'))return;
-        const resposta = await fetch("/api/alunos",{
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                id_aluno: event.target.dataset.id
-            })
-        })
-        const dados = await resposta.json();
-        alert(dados.mensagem || dados.erro)
-       buscarAlunos();
-    }
+    async function excluirAluno(id) {
+        if (!confirm('Deseja realmente excluir este aluno?')) return;
 
+        try {
+            const resposta = await fetch("/api/alunos", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id_aluno: id
+                })
+            });
+            const dados = await resposta.json();
+            alert(dados.mensagem || dados.erro);
+            buscarAlunos();
+        } catch (erro) {
+            console.error(erro);
+            alert("Erro ao excluir o aluno");
+        }
+    }
 
     return (
         <>
@@ -80,11 +98,17 @@ export default function ListAluno() {
                                     <td>{aluno.ra}</td>
 
                                     <td>
-                                        <button className={styles.botaoEditar} onClick={() => editarAlunos(aluno.id_aluno)}>
+                                        <button
+                                            className={styles.botaoEditar}
+                                            onClick={() => editarAlunos(aluno.id_aluno)}
+                                        >
                                             Editar
                                         </button>
 
-                                        <button className={styles.botaoExcluir} onClick={(e) => excluiraAluno(e)} data-id={aluno.id_aluno}>
+                                        <button
+                                            className={styles.botaoExcluir}
+                                            onClick={() => excluirAluno(aluno.id_aluno)}
+                                        >
                                             Excluir
                                         </button>
                                     </td>
