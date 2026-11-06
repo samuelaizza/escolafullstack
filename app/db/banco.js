@@ -1,6 +1,9 @@
 import Database from "better-sqlite3";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const db = new Database('./app/db/escola.db');
+const dbPath = resolve(dirname(fileURLToPath(import.meta.url)), "escola.db");
+const db = new Database(dbPath);
 
 db.pragma('foreign_keys = ON');//ativando Chave estrangeira em função Sqlite
 
@@ -23,6 +26,12 @@ db.exec(`
         FOREIGN KEY (aluno_id)
         REFERENCES alunos(id_aluno)
         ON DELETE CASCADE
+    );
+    CREATE TABLE IF NOT EXISTS usuarios (
+        id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
+        usuario TEXT NOT NULL COLLATE NOCASE UNIQUE,
+        nome TEXT NOT NULL,
+        senha_hash TEXT NOT NULL
     );
     `)
 

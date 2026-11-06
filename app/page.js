@@ -1,8 +1,5 @@
-import Principal from "./principal/page";
-import Image from "next/image";
+import AuthForm from "./components/auth-form";
 
 export default function Home() {
-  return (
-    <Principal />
-  );
+  return <AuthForm mode="login" />;
 }
