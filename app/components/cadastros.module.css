@@ -1,0 +1,157 @@
+.main {
+    min-height: calc(100vh - 80px);
+    padding: 48px 24px;
+    color: #e8e8e8;
+    background: radial-gradient(ellipse at top, #1a1a1a 0%, #0a0a0a 65%);
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: min(100%, 1000px);
+    margin: 0 auto;
+}
+
+.titulo {
+    margin: 0 0 10px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.descricao {
+    margin: 0 0 30px;
+    color: #aaa;
+    text-align: center;
+}
+
+.painel {
+    margin-bottom: 32px;
+    padding: 28px;
+    background: #121212;
+    border: 1px solid #2a2a2a;
+    border-top: 3px solid #d6001c;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo label,
+.diasTitulo {
+    color: #aaa;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.campo input,
+.campo select {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    color: #e8e8e8;
+    background: #0a0a0a;
+    border: 1px solid #444;
+}
+
+.campo input:focus,
+.campo select:focus {
+    outline: 2px solid #d6001c;
+    outline-offset: 1px;
+}
+
+.dias {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.dia {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #e8e8e8;
+}
+
+.acoes {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.botao,
+.botaoSecundario,
+.botaoExcluir {
+    padding: 11px 16px;
+    color: #fff;
+    font-weight: 700;
+    border: 1px solid #d6001c;
+    background: #d6001c;
+    cursor: pointer;
+}
+
+.botaoSecundario {
+    background: transparent;
+    border-color: #555;
+}
+
+.botaoExcluir {
+    padding: 8px 12px;
+}
+
+.tabelaContainer {
+    overflow-x: auto;
+    background: #121212;
+    border: 1px solid #2a2a2a;
+    border-top: 3px solid #d6001c;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+    padding: 13px 15px;
+    border-bottom: 1px solid #2a2a2a;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.tabela th {
+    color: #fff;
+    background: #0a0a0a;
+    text-transform: uppercase;
+}
+
+.vazio {
+    padding: 24px;
+    color: #aaa;
+    text-align: center;
+}
+
+.mensagem {
+    margin: 0 0 16px;
+    color: #ffb3bd;
+}
+
+@media (max-width: 600px) {
+    .main {
+        padding: 28px 14px;
+    }
+
+    .painel {
+        padding: 20px 16px;
+    }
+}

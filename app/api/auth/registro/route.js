@@ -6,15 +6,22 @@ export const runtime = "nodejs";
 
 export async function POST(request) {
   let dados;
+  const isJson = request.headers.get("content-type")?.includes("application/json");
 
   try {
-    dados = await request.json();
+    dados = isJson
+      ? await request.json()
+      : Object.fromEntries((await request.formData()).entries());
   } catch {
-    return NextResponse.json({ erro: "Envie dados válidos." }, { status: 400 });
+    return isJson
+      ? NextResponse.json({ erro: "Envie dados válidos." }, { status: 400 })
+      : NextResponse.redirect(new URL("/registro", request.url), 303);
   }
 
   if (!dados || typeof dados !== "object" || Array.isArray(dados)) {
-    return NextResponse.json({ erro: "Envie dados válidos." }, { status: 400 });
+    return isJson
+      ? NextResponse.json({ erro: "Envie dados válidos." }, { status: 400 })
+      : NextResponse.redirect(new URL("/registro", request.url), 303);
   }
 
   const usuario = typeof dados.usuario === "string" ? dados.usuario.trim() : "";
@@ -22,17 +29,15 @@ export async function POST(request) {
   const senha = typeof dados.senha === "string" ? dados.senha : "";
 
   if (!usuario || !nome || !senha) {
-    return NextResponse.json(
-      { erro: "Preencha usuário, nome e senha." },
-      { status: 400 }
-    );
+    return isJson
+      ? NextResponse.json({ erro: "Preencha usuário, nome e senha." }, { status: 400 })
+      : NextResponse.redirect(new URL("/registro", request.url), 303);
   }
 
   if (usuario.length > 50 || nome.length > 120 || senha.length > 128) {
-    return NextResponse.json(
-      { erro: "Confira o tamanho dos campos informados." },
-      { status: 400 }
-    );
+    return isJson
+      ? NextResponse.json({ erro: "Confira o tamanho dos campos informados." }, { status: 400 })
+      : NextResponse.redirect(new URL("/registro", request.url), 303);
   }
 
   try {
@@ -42,16 +47,14 @@ export async function POST(request) {
       "INSERT INTO usuarios (usuario, nome, senha_hash) VALUES (?, ?, ?)"
     ).run(usuario, nome, senhaHash);
 
-    return NextResponse.json(
-      { mensagem: "Cadastro realizado com sucesso." },
-      { status: 201 }
-    );
+    return isJson
+      ? NextResponse.json({ mensagem: "Cadastro realizado com sucesso." }, { status: 201 })
+      : NextResponse.redirect(new URL("/login?registrado=1", request.url), 303);
   } catch (error) {
     if (error.code === "SQLITE_CONSTRAINT_UNIQUE") {
-      return NextResponse.json(
-        { erro: "Este usuário já está cadastrado." },
-        { status: 409 }
-      );
+      return isJson
+        ? NextResponse.json({ erro: "Este usuário já está cadastrado." }, { status: 409 })
+        : NextResponse.redirect(new URL("/registro", request.url), 303);
     }
 
     console.error("Erro ao cadastrar usuário:", error);

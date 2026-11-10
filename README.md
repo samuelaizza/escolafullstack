@@ -34,3 +34,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Professores e disciplinas
+
+Cadastre primeiro as disciplinas em `/caddisciplinas`, informando o nome e a pontuação mínima para aprovação. Depois, cadastre os professores em `/cadprofessores`, incluindo NIF, dias de aula, disciplina responsável e total de aulas semanais. As listas permitem consultar, editar e excluir os registros.
+
+As APIs estão disponíveis em `/api/disciplinas` e `/api/professores`. A matrícula (NIF) e o nome da disciplina são únicos; uma disciplina vinculada a um professor não pode ser excluída.

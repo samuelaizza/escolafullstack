@@ -33,6 +33,30 @@ db.exec(`
         nome TEXT NOT NULL,
         senha_hash TEXT NOT NULL
     );
+    CREATE TABLE IF NOT EXISTS sessoes (
+        token_hash TEXT PRIMARY KEY,
+        usuario_id INTEGER NOT NULL,
+        expira_em INTEGER NOT NULL,
+        FOREIGN KEY (usuario_id)
+        REFERENCES usuarios(id_usuario)
+        ON DELETE CASCADE
+    );
+    CREATE TABLE IF NOT EXISTS disciplinas (
+        id_disciplina INTEGER PRIMARY KEY AUTOINCREMENT,
+        nome TEXT NOT NULL COLLATE NOCASE UNIQUE,
+        pontuacao_minima REAL NOT NULL CHECK (pontuacao_minima >= 0)
+    );
+    CREATE TABLE IF NOT EXISTS professores (
+        id_professor INTEGER PRIMARY KEY AUTOINCREMENT,
+        nome TEXT NOT NULL,
+        matricula_nif TEXT NOT NULL UNIQUE,
+        dias_aula TEXT NOT NULL,
+        disciplina_id INTEGER NOT NULL,
+        total_aulas_semana INTEGER NOT NULL CHECK (total_aulas_semana > 0),
+        FOREIGN KEY (disciplina_id)
+        REFERENCES disciplinas(id_disciplina)
+        ON DELETE RESTRICT
+    );
     `)
 
     console.log('Banco criado com sucesso!');

@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./auth-form.module.css";
 
-export default function AuthForm({ mode }) {
+export default function AuthForm({ mode, initialFeedback = "" }) {
   const router = useRouter();
   const isRegistro = mode === "registro";
-  const [feedback, setFeedback] = useState("");
+  const [feedback, setFeedback] = useState(initialFeedback);
   const [submitting, setSubmitting] = useState(false);
 
   async function handleSubmit(event) {
@@ -63,7 +63,12 @@ export default function AuthForm({ mode }) {
             : "Entre com seus dados para acessar o sistema."}
         </p>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form
+          className={styles.form}
+          onSubmit={handleSubmit}
+          method="post"
+          action={isRegistro ? "/api/auth/registro" : "/api/auth/login"}
+        >
           <label htmlFor="usuario">Usuário</label>
           <input
             id="usuario"

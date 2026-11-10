@@ -1,5 +1,6 @@
 import Header from "../components/header";
 import styles from "./principal.module.css";
+import Link from "next/link";
 
 export default function Principal() {
     return (
@@ -23,9 +24,14 @@ export default function Principal() {
                         desenvolvimento educacional.
                     </p>
 
-                    <button className={styles.btn}>
+                    <Link
+                        className={styles.btn}
+                        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         Acessar Portal
-                    </button>
+                    </Link>
                 </section>
 
                 <section className={styles.cards}>
